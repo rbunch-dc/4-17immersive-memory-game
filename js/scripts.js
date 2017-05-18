@@ -27,7 +27,7 @@ $(document).ready(function(){
 		memoryGameHTML += '<div class="card col-sm-3">';
 			memoryGameHTML += '<div class="card-holder">';
 				memoryGameHTML += `<div class="card-front">${card}</div>`;
-				memoryGameHTML += '<div class="card-front">'+card+'</div>';
+				// memoryGameHTML += '<div class="card-front">'+card+'</div>';
 				memoryGameHTML += `<div class="card-back"></div>`;
 			memoryGameHTML += '</div>';
 		memoryGameHTML += '</div>';
@@ -43,6 +43,7 @@ $(document).ready(function(){
 		// Set up an array called cardsUp that contains all elements
 		// with a class of flip (that's how we know they are face up)
 		var cardsUp = $('.flip');
+		console.dir(cardsUp[0])
 		if(cardsUp.length == 2){
 			// Two cards have a flip class (face up) or we wouldn't be here
 			// Check to see if they are the same...
@@ -51,18 +52,19 @@ $(document).ready(function(){
 			// cardsUpImages = cardsUp.find('.card-front img');
 			if(card1 == card2){
 				// they match! I.e., the images are exactly the same
-
+				cardsUp.removeClass('flip');
+				cardsUp.addClass('matched');
+				var matchedCards = $('.matched');
+				if(matchedCards.length == gridSize){
+					// Then every card has been matche. Game won!
+					alert("You have won the game!");
+				}
 			}else{
 				// they are not the same. Nice try. Flip them back over
 				setTimeout(()=>{
-					cardsUp.removeClass('flip');					
+					cardsUp.removeClass('flip');
 				},2000);
 			}
-			
-
 		}
-
-
 	});
-
 });

@@ -43,6 +43,10 @@ can play in the 3d space. */
 	min-width:300px;
 }
 
-.flip{
+.flip,.matched{
 	transform: rotateY(-180deg);
+}
+
+.matched{
+	transform: rotateY(520deg);
 }
