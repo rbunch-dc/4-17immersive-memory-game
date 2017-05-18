@@ -1,0 +1,48 @@
+/* Don't let the images escape their parent! */
+img{
+	max-width: 100%;
+}
+
+/* card is the grandparent. It needs pespective so that it's childnre
+can play in the 3d space. */
+.card{
+	height: 300px;
+	min-width: 300px;
+	border: 2px solid black;
+	perspective: 500px;
+}
+
+.card-holder{
+	width: 300px;
+	/* Children will be absolute. So make this relative so they have an anchor */
+	position: relative;
+	/* Make sure that the children know they are in 3d land */
+	transform-style: preserve-3d;
+	transition: 1s all;
+	cursor: pointer;
+}
+
+/* .card-back:hover{
+	border: 1px solid red;
+}
+ */
+.card-front,.card-back{
+	position: absolute;
+	top: 0;
+	left: 0;
+	backface-visibility: hidden;
+}
+
+.card-front{
+	transform: rotateY(180deg);
+}
+
+.card-back{
+	background: url('../images/logo-bw.png') no-repeat 50% 50%;
+	height: 300px;
+	min-width:300px;
+}
+
+.flip{
+	transform: rotateY(-180deg);
+}
